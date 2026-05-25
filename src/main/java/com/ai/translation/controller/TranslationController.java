@@ -22,11 +22,6 @@ import java.util.Map;
 @CrossOrigin("http://localhost:3000")
 public class TranslationController {
 
-//    @GetMapping("/translate")
-//    public String hello() {
-//        return "Hello Working";
-//    }
-
     @Autowired
     private UserRepository userRepository;
 
@@ -53,14 +48,14 @@ public class TranslationController {
         String source = "en";
         if (source.equalsIgnoreCase(target)) {
             return ResponseEntity.badRequest()
-                    .body(Constant.SAME_LANGUAGE);
+                    .body(Map.of("message", Constant.REQUIRED_FIELDS));
         }
 
         List<String> validLangs = List.of("en", "hi", "fr", "es", "de");
 
         if (!validLangs.contains(target)) {
             return ResponseEntity.badRequest()
-                    .body(Constant.INVALID_LANGUAGE);
+                    .body(Map.of("message", Constant.INVALID_LANGUAGE));
         }
 
         // Rate Limit
@@ -72,7 +67,7 @@ public class TranslationController {
 
         if (!limiter.allow(username)) {
             return ResponseEntity.status(429)
-                    .body(Constant.TOO_MANY_REQUESTS);
+                    .body(Map.of("message", Constant.TOO_MANY_REQUESTS));
         }
 
         try {
