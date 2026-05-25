@@ -29,4 +29,8 @@ public class Translation {
     @Column(name = "target_lang")
     private String targetLang;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
