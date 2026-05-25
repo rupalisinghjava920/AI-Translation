@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-//@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("http://localhost:3000/")
 public class UserController {
 
     @Autowired
@@ -43,10 +43,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@Valid @RequestBody User user) {
-//
-//        if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-//            throw new CustomException(Constant.USER_ALREADY_EXISTS);
-//        }
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -93,7 +89,8 @@ public class UserController {
         return ResponseEntity.ok(Map.of(
                 "message", Constant.USER_LOGIN_SUCCESS,
                 "token", token,
-                "userId", user.getId()
+                "userId", user.getId(),
+                "roles", roles
         ));
     }
 }
