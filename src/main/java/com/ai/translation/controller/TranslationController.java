@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("http://localhost:3000")
 public class TranslationController {
 
 //    @GetMapping("/translate")
@@ -67,7 +67,7 @@ public class TranslationController {
         String username = SecurityContextHolder.getContext()
                 .getAuthentication()
                 .getName();
-        
+
         User user = userRepository.findByUsername(username).get();
 
         if (!limiter.allow(username)) {
