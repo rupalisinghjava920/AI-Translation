@@ -19,7 +19,8 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
+@CrossOrigin("*")
 public class TranslationController {
 
     @Autowired
