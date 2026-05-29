@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api")
 //@CrossOrigin("http://localhost:3000")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://ai-translation-frontend.vercel.app")
 public class UserController {
 
     @Autowired

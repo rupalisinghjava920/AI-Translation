@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 //@CrossOrigin("http://localhost:3000")
-@CrossOrigin("*")
+@CrossOrigin(origins = "https://ai-translation-frontend.vercel.app")
 public class TranslationController {
 
     @Autowired
